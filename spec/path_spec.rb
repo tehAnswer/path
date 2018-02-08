@@ -26,13 +26,13 @@ RSpec.describe Path do
     let(:instance) { described_class.new('/Users/Don') }
     before { instance.cd('../../FBI/Secrets/../Secrets/A51') }
 
-    it { is_expected.to eq('/Users/FBI/Secrets/A51') }
+    it { is_expected.to eq('/FBI/Secrets/A51') }
   end
 
   context 'too much parent visiting' do
     let(:instance) { described_class.new('/Users/Don') }
     before { instance.cd('../../../../../../../../../../../../../../..') }
 
-    it { is_expected.to eq('/Users/FBI/Secrets/A51') }
+    it { is_expected.to eq('/') }
   end
 end
